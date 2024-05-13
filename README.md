@@ -14,7 +14,7 @@ AirbnbCLI allows you to create, retrieve, update, and delete Airbnb objects usin
   - Clone this repository using Git:
 
     Bash
-    git clone https://github.com/your-username/airbnb_cli.git
+    git clone [https://github.com/your-username/airbnb_cli.git](https://github.com/simplykevine/alu-AirBnB_clone.git)
 
   - Install the package in development mode to make changes immediately reflected:
 
@@ -37,40 +37,40 @@ AirbnbCLI allows you to create, retrieve, update, and delete Airbnb objects usin
 
     -- Once the interpreter starts, you can use the following commands:
 
-	- help: Displays all available commands and their descriptions.
-	- run <command>: Executes the specified command.
-	- quit: Exits the command interpreter.
+	--- help: Displays all available commands and their descriptions.
+	--- run <command>: Executes the specified command.
+	--- quit: Exits the command interpreter.
 
     -- Examples
-	- To get help:
+	--- To get help:
 	(cmd) help
 
-	- To execute a command:
+	--- To execute a command:
 	(cmd) run echo "Hello, World!"
 
-	- To exit the interpreter:
+	--- To exit the interpreter:
 	(cmd) quit
 
     -- **Other commands**:
-	- create_user <username> <email>: Creates a new user.
-	- get_user <user_id>: Retrieves a user by ID.
-	- list_users: Lists all users.
-	- update_user <user_id> <attribute> <new_value>: Updates a specific user attribute.
-	- delete_user <user_id>: Deletes a user.
+	--- create_user <username> <email>: Creates a new user.
+	--- get_user <user_id>: Retrieves a user by ID.
+	--- list_users: Lists all users.
+	--- update_user <user_id> <attribute> <new_value>: Updates a specific user attribute.
+	--- delete_user <user_id>: Deletes a user.
 
 	(Similar commands exist for other object types like places and cities)
 
-	- help: Provides a list of available commands.
-	- exit: Exits the command interpreter.
+	--- help: Provides a list of available commands.
+	--- exit: Exits the command interpreter.
 
     -- Example Usage:
 
-	* (airbnb) create_user john_doe john.doe@example.com
-	* (airbnb) get_user 1
-	* (airbnb) update_user 1 email jane.doe@example.com
-	* (airbnb) list_users
-	* (airbnb) help
-	* (airbnb) exit
+	*** (airbnb) create_user john_doe john.doe@example.com
+	*** (airbnb) get_user 1
+	*** (airbnb) update_user 1 email jane.doe@example.com
+	*** (airbnb) list_users
+	*** (airbnb) help
+	*** (airbnb) exit
 
   - Additional Notes
 
