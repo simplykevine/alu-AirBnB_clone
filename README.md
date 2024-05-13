@@ -52,16 +52,16 @@ AirbnbCLI allows you to create, retrieve, update, and delete Airbnb objects usin
 	(cmd) quit
 
     -- **Other commands**:
-	--- create_user <username> <email>: Creates a new user.
-	--- get_user <user_id>: Retrieves a user by ID.
-	--- list_users: Lists all users.
-	--- update_user <user_id> <attribute> <new_value>: Updates a specific user attribute.
-	--- delete_user <user_id>: Deletes a user.
+	-- create_user <username> <email>: Creates a new user.
+	-- get_user <user_id>: Retrieves a user by ID.
+	-- list_users: Lists all users.
+	-- update_user <user_id> <attribute> <new_value>: Updates a specific user attribute.
+	-- delete_user <user_id>: Deletes a user.
 
 	(Similar commands exist for other object types like places and cities)
 
-	--- help: Provides a list of available commands.
-	--- exit: Exits the command interpreter.
+	-- help: Provides a list of available commands.
+	-- exit: Exits the command interpreter.
 
     -- Example Usage:
 
