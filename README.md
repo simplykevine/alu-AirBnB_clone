@@ -35,13 +35,13 @@ AirbnbCLI allows you to create, retrieve, update, and delete Airbnb objects usin
 
   - **Using the Command Interpreter**:
 
-    - Once the interpreter starts, you can use the following commands:
+    -- Once the interpreter starts, you can use the following commands:
 
 	- help: Displays all available commands and their descriptions.
 	- run <command>: Executes the specified command.
 	- quit: Exits the command interpreter.
 
-    - Examples
+    -- Examples
 	- To get help:
 	(cmd) help
 
@@ -51,7 +51,7 @@ AirbnbCLI allows you to create, retrieve, update, and delete Airbnb objects usin
 	- To exit the interpreter:
 	(cmd) quit
 
-    - **Other commands**:
+    -- **Other commands**:
 	- create_user <username> <email>: Creates a new user.
 	- get_user <user_id>: Retrieves a user by ID.
 	- list_users: Lists all users.
@@ -63,7 +63,7 @@ AirbnbCLI allows you to create, retrieve, update, and delete Airbnb objects usin
 	- help: Provides a list of available commands.
 	- exit: Exits the command interpreter.
 
-    - Example Usage:
+    -- Example Usage:
 
 	* (airbnb) create_user john_doe john.doe@example.com
 	* (airbnb) get_user 1
@@ -79,7 +79,7 @@ Explore implementing additional object types and functionalities related to Airb
 
 ## Authors
 
-Refer to the [AUTHORS](#authors) file at the root of the repository for a list of contributors.
+Refer to the [AUTHORS](https://github.com/simplykevine/alu-AirBnB_clone/blob/master/AUTHORS) file at the root of the repository for a list of contributors.
 
 ## License
 
