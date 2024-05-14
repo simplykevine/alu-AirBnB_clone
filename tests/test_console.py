@@ -1565,5 +1565,6 @@ class TestHBNBCommand_count(unittest.TestCase):
             self.assertFalse(HBNBCommand().onecmd("Review.count()"))
             self.assertEqual("1", output.getvalue().strip())
 
+
 if __name__ == "__main__":
     unittest.main()
