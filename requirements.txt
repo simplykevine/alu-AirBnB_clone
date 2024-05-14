@@ -1,0 +1,4 @@
+flask
+sqlalchemy
+unittest
+# Add other dependencies as needed

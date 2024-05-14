@@ -1,127 +1,70 @@
 #!/usr/bin/python3
-"""Defines unittests for models/amenity.py.
-
-Unittest classes:
-    TestAmenity_instantiation
-    TestAmenity_save
-    TestAmenity_to_dict
+"""Unit tests for the `amenity` module.
 """
 import os
-import models
 import unittest
+from models import storage
 from datetime import datetime
-from time import sleep
 from models.amenity import Amenity
+from models.engine.file_storage import FileStorage
 
 
-class TestAmenity_instantiation(unittest.TestCase):
-    """
-    Unittests for testing instantiation of
-    the Amenity class.
-    """
+class TestAmenity(unittest.TestCase):
+    """Test cases for the `Amenity` class."""
 
-    def test_no_args_instantiates(self):
-        """
-        Test that Amenity class can be instantiated
-        with no arguments.
-        """
-        self.assertEqual(Amenity, type(Amenity()))
-
-    def test_new_instance_stored_in_objects(self):
-        """
-        Test that a new instance of Amenity is
-        stored in the 'objects' attribute.
-        """
-        self.assertIn(Amenity(), models.storage.all().values())
-
-    def test_id_is_public_str(self):
-        """Test that the 'id' attribute of Amenity is of type str."""
-        self.assertEqual(str, type(Amenity().id))
-
-    # ... (similar comments for other test methods)
-
-    def test_instantiation_with_None_kwargs(self):
-        """
-        Test that instantiation with None kwargs raises TypeError.
-        """
-        with self.assertRaises(TypeError):
-            Amenity(id=None, created_at=None, updated_at=None)
-
-
-class TestAmenity_save(unittest.TestCase):
-    """
-    Unittests for testing save method of the Amenity class.
-    """
-
-    @classmethod
     def setUp(self):
-        """
-        Set up test environment by renaming 'file.json' to 'tmp'.
-        """
-        try:
-            os.rename("file.json", "tmp")
-        except IOError:
-            pass
+        pass
 
-    def tearDown(self):
-        """
-        Clean up test environment by removing 'file.json' and
-        renaming 'tmp' back.
-        """
-        try:
-            os.remove("file.json")
-        except IOError:
-            pass
-        try:
-            os.rename("tmp", "file.json")
-        except IOError:
-            pass
+    def tearDown(self) -> None:
+        """Resets FileStorage data."""
+        FileStorage._FileStorage__objects = {}
+        if os.path.exists(FileStorage._FileStorage__file_path):
+            os.remove(FileStorage._FileStorage__file_path)
 
-    def test_one_save(self):
-        """
-        Test that the save method updates the 'updated_at'
-        attribute
-        ."""
-        am = Amenity()
-        sleep(0.05)
-        first_updated_at = am.updated_at
-        am.save()
-        self.assertLess(first_updated_at, am.updated_at)
+    def test_params(self):
+        """Test method for class attributes"""
 
-    # ... (similar comments for other test methods)
+        a1 = Amenity()
+        a2 = Amenity(**a1.to_dict())
+        a3 = Amenity("hello", "wait", "in")
 
-    def test_save_with_arg(self):
-        """Test that save method with an argument raises TypeError."""
-        am = Amenity()
-        with self.assertRaises(TypeError):
-            am.save(None)
+        k = f"{type(a1).__name__}.{a1.id}"
+        self.assertIsInstance(a1.name, str)
+        self.assertIn(k, storage.all())
+        self.assertEqual(a3.name, "")
 
-    def test_save_updates_file(self):
-        """
-        Test that save method updates the 'file.json' with
-        Amenity instance information.
-        """
-        am = Amenity()
-        am.save()
-        amid = "Amenity." + am.id
-        with open("file.json", "r") as f:
-            self.assertIn(amid, f.read())
+    def test_init(self):
+        """Test method for public instances"""
+        a1 = Amenity()
+        a2 = Amenity(**a1.to_dict())
+        self.assertIsInstance(a1.id, str)
+        self.assertIsInstance(a1.created_at, datetime)
+        self.assertIsInstance(a1.updated_at, datetime)
+        self.assertEqual(a1.updated_at, a2.updated_at)
 
+    def test_str(self):
+        """Test method for str representation"""
+        a1 = Amenity()
+        string = f"[{type(a1).__name__}] ({a1.id}) {a1.__dict__}"
+        self.assertEqual(a1.__str__(), string)
 
-class TestAmenity_to_dict(unittest.TestCase):
-    """Unittests for testing to_dict method of the Amenity class."""
+    def test_save(self):
+        """Test method for save"""
+        a1 = Amenity()
+        old_update = a1.updated_at
+        a1.save()
+        self.assertNotEqual(a1.updated_at, old_update)
 
-    def test_to_dict_type(self):
-        """Test that to_dict method returns a dictionary."""
-        self.assertTrue(dict, type(Amenity().to_dict()))
-
-    # ... (similar comments for other test methods)
-
-    def test_to_dict_with_arg(self):
-        """Test that to_dict with an argument raises TypeError."""
-        am = Amenity()
-        with self.assertRaises(TypeError):
-            am.to_dict(None)
+    def test_todict(self):
+        """Test method for dict"""
+        a1 = Amenity()
+        a2 = Amenity(**a1.to_dict())
+        a_dict = a2.to_dict()
+        self.assertIsInstance(a_dict, dict)
+        self.assertEqual(a_dict['__class__'], type(a2).__name__)
+        self.assertIn('created_at', a_dict.keys())
+        self.assertIn('updated_at', a_dict.keys())
+        self.assertNotEqual(a1, a2)
 
 
 if __name__ == "__main__":

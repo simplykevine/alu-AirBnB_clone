@@ -12,7 +12,7 @@ class Amenity(BaseModel):
     available in a system.
     """
 
-    name = ""
+    name: str = ''
 
     """
     Placeholder for the name attribute of the Amenity class.

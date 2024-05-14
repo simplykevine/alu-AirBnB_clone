@@ -4,6 +4,8 @@ This module contains the entry point for the command interpreter.
 """
 
 import cmd
+from models import storage
+from models.engine.errors import *
 from models.base_model import BaseModel
 from models.user import User
 from models.amenity import Amenity
@@ -13,6 +15,7 @@ from models.review import Review
 from models.state import State
 from models.engine.file_storage import FileStorage
 import inspect
+import shlex
 import json
 import sys
 
